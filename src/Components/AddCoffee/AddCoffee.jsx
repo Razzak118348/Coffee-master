@@ -16,6 +16,21 @@ const AddCoffee = () => {
         const teast = form.teast.value;
 const newCoffee = {name, price, quantity, details, photo, category, supplier, teast}
         console.log(newCoffee);
+
+        //send data to server
+        fetch('http://localhost:5000/coffee', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newCoffee),
+
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data)
+
+        })
     }
 
     return (
