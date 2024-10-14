@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { FaArrowLeftLong } from "react-icons/fa6";
+import Swal from 'sweetalert2'
 
 const AddCoffee = () => {
 
@@ -29,7 +30,14 @@ const newCoffee = {name, price, quantity, details, photo, category, supplier, te
         .then(res=>res.json())
         .then(data=>{
             console.log(data)
-
+if(acknowledged){
+    Swal.fire({
+        title: 'Success!',
+        text: 'User added successfully',
+        icon: 'success',
+        confirmButtonText: 'Cool'
+      })
+}
         })
     }
 
@@ -99,12 +107,16 @@ const newCoffee = {name, price, quantity, details, photo, category, supplier, te
                                     <input type="text" placeholder="Coffee taste" name="teast" className="input input-bordered w-full" />
                                 </label>
                             </div>
+                            <div className="form-control">
+                            <label className="label">Photo URL</label>
+                            <input type="text" placeholder="Photo URL" name="photo" className="input input-bordered w-full" />
+                            </div>
                         </div>
                     </div>
 
                     <div className="my-5">
-                        <label className="label">Photo URL</label>
-                        <input type="text" placeholder="Photo URL" name="photo" className="input input-bordered w-full" />
+                        {/* <label className="label">Photo URL</label>
+                        <input type="text" placeholder="Photo URL" name="photo" className="input input-bordered w-full" /> */}
                     </div>
 
                     <div className="flex items-center justify-center mt-6">
