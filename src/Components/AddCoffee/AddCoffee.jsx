@@ -30,13 +30,14 @@ const newCoffee = {name, price, quantity, details, photo, category, supplier, te
         .then(res=>res.json())
         .then(data=>{
             console.log(data)
-if(acknowledged){
+if(data.insertedId){
     Swal.fire({
         title: 'Success!',
-        text: 'User added successfully',
+        text: 'Coffee added successfully',
         icon: 'success',
         confirmButtonText: 'Cool'
       })
+form.reset();
 }
         })
     }
@@ -50,7 +51,7 @@ if(acknowledged){
             </button>
 
             <div className="bg-[#F4F3F0] p-6 rounded-xl">
-                <h3 className="text-center text-3xl font-bold rancho-font">Add New Coffee</h3>
+                <h3 className="text-center text-xl md:text-3xl font-bold rancho-font">Add New Coffee</h3>
                 <div className="flex items-center justify-center my-5">
                     <p className="w-full mx-5 md:w-1/2">
                         It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
@@ -112,11 +113,6 @@ if(acknowledged){
                             <input type="text" placeholder="Photo URL" name="photo" className="input input-bordered w-full" />
                             </div>
                         </div>
-                    </div>
-
-                    <div className="my-5">
-                        {/* <label className="label">Photo URL</label>
-                        <input type="text" placeholder="Photo URL" name="photo" className="input input-bordered w-full" /> */}
                     </div>
 
                     <div className="flex items-center justify-center mt-6">
