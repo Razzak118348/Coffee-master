@@ -11,6 +11,9 @@ import Root from './Pages/Root/Root';
 import Home from './Pages/Home/Home';
 import AddCoffee from './Components/AddCoffee/AddCoffee';
 import UpdateCoffee from './Pages/UpdateCoffee/UpdateCoffee';
+import Login from './Pages/Login/Login';
+import Signup from './Pages/SignUp/SignUp';
+import ContextApi from './Context/ContextApi';
 
 
 const router = createBrowserRouter([
@@ -31,12 +34,21 @@ const router = createBrowserRouter([
         path:'updatecoffee/:id',
         element:<UpdateCoffee></UpdateCoffee>,
         loader : ({params})=>fetch(`http://localhost:5000/coffee/${params.id}`)
-      }
+      },
+      {
+        path: '/login',
+        element: <Login></Login>
+    },
+    {
+        path: '/signup',
+        element: <Signup></Signup>
+    }
     ]
   },
 ]);
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+<ContextApi children={<RouterProvider router={router} />}></ContextApi>
   </StrictMode>,
 )
