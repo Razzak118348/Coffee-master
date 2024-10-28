@@ -35,7 +35,7 @@ const Signup = () => {
 
   const onSubmit = (data) => {
     const { name, image, email, password } = data;
-    console.log(name, email, password)
+    // console.log(name, email, password)
 
 
 
@@ -60,8 +60,10 @@ const Signup = () => {
 
     //creat user
     creatUser(email, password)
-      .then(() => {
-        const userEmail ={email}
+      .then((result) => {
+        // console.log(result.user)
+        const creationTime = result.user.metadata?.creationTime;
+        const userEmail ={email , createdAt : creationTime}
         console.log(userEmail)
         console.log('it is in update user')
         fetch('http://localhost:5000/user', {
@@ -72,12 +74,17 @@ const Signup = () => {
           body: JSON.stringify(userEmail)
         })
           .then((response) => response.json())
-          .then(data => console.log(data))
+          .then(data => {
+            console.log(data)
+            if(data.insertedId){
+              toast.success("Successfully Resister", {
+                position: 'top-right',
+                onClose: navigate('/')
+              })
+            }
+          })
 
-        toast.success("Successfully Resister", {
-          position: 'top-right',
-          onClose: navigate('/')
-        })
+
       })
       .catch(error => {
         toast.error("can not creat user", {
@@ -90,7 +97,7 @@ const Signup = () => {
     <div>
 
       <ToastContainer
-        autoClose={500}
+
       ></ToastContainer>
       {/* signup form  */}
       <div className="mt-10  p-3 rounded-2xl ">

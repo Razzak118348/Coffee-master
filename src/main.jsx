@@ -14,6 +14,7 @@ import UpdateCoffee from './Pages/UpdateCoffee/UpdateCoffee';
 import Login from './Pages/Login/Login';
 import Signup from './Pages/SignUp/SignUp';
 import ContextApi from './Context/ContextApi';
+import User from './Components/User/User';
 
 
 const router = createBrowserRouter([
@@ -42,6 +43,11 @@ const router = createBrowserRouter([
     {
         path: '/signup',
         element: <Signup></Signup>
+    },
+    {
+      path:'/user',
+      element:<User></User>,
+      loader : ()=>fetch('http://localhost:5000/user')
     }
     ]
   },
