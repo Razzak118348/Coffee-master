@@ -21,40 +21,40 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
-    children:[
+    children: [
       {
         path: "/",
-        element:<Home></Home>,
-        loader : ()=>fetch('http://localhost:5000/coffee')
+        element: <Home></Home>,
+        loader: () => fetch('https://coffee-store-server-henna-three.vercel.app/coffee')
       },
       {
-        path:'/addcoffee',
-        element:<AddCoffee></AddCoffee>
+        path: '/addcoffee',
+        element: <AddCoffee></AddCoffee>
       },
       {
-        path:'updatecoffee/:id',
-        element:<UpdateCoffee></UpdateCoffee>,
-        loader : ({params})=>fetch(`http://localhost:5000/coffee/${params.id}`)
+        path: 'updatecoffee/:id',
+        element: <UpdateCoffee></UpdateCoffee>,
+        loader: ({ params }) => fetch(`https://coffee-store-server-henna-three.vercel.app/coffee/${params.id}`)
       },
       {
         path: '/login',
         element: <Login></Login>
-    },
-    {
+      },
+      {
         path: '/signup',
         element: <Signup></Signup>
-    },
-    {
-      path:'/user',
-      element:<User></User>,
-      loader : ()=>fetch('http://localhost:5000/user')
-    }
+      },
+      {
+        path: '/user',
+        element: <User></User>,
+        loader: () => fetch('https://coffee-store-server-henna-three.vercel.app/user')
+      }
     ]
   },
 ]);
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-<ContextApi children={<RouterProvider router={router} />}></ContextApi>
+    <ContextApi children={<RouterProvider router={router} />}></ContextApi>
   </StrictMode>,
 )

@@ -19,7 +19,7 @@ const newCoffee = {name, price, quantity, details, photo, category, supplier, te
         console.log(newCoffee);
 
         //send data to server
-        fetch('http://localhost:5000/coffee', {
+        fetch('https://coffee-store-server-henna-three.vercel.app/coffee', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

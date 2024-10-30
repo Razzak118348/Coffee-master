@@ -66,7 +66,7 @@ const Signup = () => {
         const userEmail ={email , createdAt : creationTime}
         console.log(userEmail)
         console.log('it is in update user')
-        fetch('http://localhost:5000/user', {
+        fetch('https://coffee-store-server-henna-three.vercel.app/user', {
           method: 'POST',
           headers: {
             'content-type': 'application/json'
