@@ -15,7 +15,7 @@ const AddCoffee = () => {
         const category = form.category.value;
         const supplier = form.supplier.value;
         const teast = form.teast.value;
-const newCoffee = {name, price, quantity, details, photo, category, supplier, teast}
+        const newCoffee = { name, price, quantity, details, photo, category, supplier, teast }
         console.log(newCoffee);
 
         //send data to server
@@ -27,19 +27,19 @@ const newCoffee = {name, price, quantity, details, photo, category, supplier, te
             body: JSON.stringify(newCoffee),
 
         })
-        .then(res=>res.json())
-        .then(data=>{
-            console.log(data)
-if(data.insertedId){
-    Swal.fire({
-        title: 'Success!',
-        text: 'Coffee added successfully',
-        icon: 'success',
-        confirmButtonText: 'Cool'
-      })
-form.reset();
-}
-        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Coffee added successfully',
+                        icon: 'success',
+                        confirmButtonText: 'Cool'
+                    })
+                    form.reset();
+                }
+            })
     }
 
     return (
@@ -109,8 +109,8 @@ form.reset();
                                 </label>
                             </div>
                             <div className="form-control">
-                            <label className="label">Photo URL</label>
-                            <input type="text" placeholder="Photo URL" name="photo" className="input input-bordered w-full" />
+                                <label className="label">Photo URL</label>
+                                <input type="text" placeholder="Photo URL" name="photo" className="input input-bordered w-full" />
                             </div>
                         </div>
                     </div>
